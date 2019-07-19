@@ -1,13 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import { Button, Form, Input } from 'semantic-ui-react';
-import { Formik, withFormik } from 'formik';
+import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
-import { useLocalStorage } from './useLocalStorage';
 
-const Register = (props, touched, errors) => {
-  const [storedValue, setValue] = useLocalStorage('token');
-
+const Register = props => {
   return (
     <Formik
       initialValues={{
@@ -20,13 +16,23 @@ const Register = (props, touched, errors) => {
         axios
           .post('http://localhost:5000/api/register', values)
           .then(res => {
-            console.log(res);
             localStorage.setItem('token', res.data.token);
             console.log(props);
           })
           .then(() => props.history.push('restricted/data'))
           .catch(err => console.log(err));
       }}
+      validationSchema={() =>
+        Yup.object().shape({
+          username: Yup.string()
+            .max(15, 'Name cant be more than 15 characters')
+            .required('A name is required'),
+
+          password: Yup.string()
+            .min(8, 'Your password must have a minimum of 8 characters.')
+            .required('Password is required'),
+        })
+      }
       render={props => (
         <Form
           style={{
@@ -37,10 +43,12 @@ const Register = (props, touched, errors) => {
           onSubmit={props.handleSubmit}
         >
           <div>
-            {touched.username && errors.username && <h3>{errors.username}</h3>}
+            {props.touched.username && props.errors.username && (
+              <p>{props.errors.username}</p>
+            )}
 
-            <Form.Field
-              control={Input}
+            <Field
+              placeholder='Username'
               label='username'
               name='username'
               id='username'
@@ -51,44 +59,25 @@ const Register = (props, touched, errors) => {
           </div>
 
           <div>
-            {touched.password && errors.password && <h3>{errors.password}</h3>}
-            <Form.Field
-              control={Input}
+            {props.touched.password && props.errors.password && (
+              <p>{props.errors.password}</p>
+            )}
+            <Field
+              placeholder='Password'
               label='password'
               name='password'
               id='password'
-              type='password'
+              type='text'
               onChange={props.handleChange}
               width='4'
-              reg
             />
           </div>
 
-          <Button type='submit'>Register</Button>
+          <button type='submit'>Register</button>
         </Form>
       )}
     />
   );
 };
-const FormikRegister = withFormik({
-  mapPropsToValues({ username, password }) {
-    return {
-      username: username || '',
-      password: password || '',
-    };
-  },
 
-  validationSchema: Yup.object().shape({
-    username: Yup.string()
-      .required('A name is required')
-      .max(15, 'Name is too long.'),
-    password: Yup.string()
-      .min(6, 'Your password must have a minimum of six characters.')
-      .required('Password is required'),
-  }),
-  handleSubmit(values, { setSubmitting }) {
-    console.log(values);
-  },
-})(Register);
-
-export default FormikRegister;
+export default Register;
