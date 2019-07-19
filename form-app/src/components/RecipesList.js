@@ -11,12 +11,23 @@ const RecipeList = () => {
       .catch(err => console.log(err));
   }, []);
   return (
-    <div className='RecipesList'>
+    <div>
       <h1>Recipes</h1>
-      {recipes.map(recipe => {
+      {recipes.map((recipe, index) => {
         return (
-          <div className='Recipe'>
-            <h3>{recipe.name}</h3>
+          <div
+            key={index}
+            style={{
+              border: '1px solid grey',
+              margin: '10px',
+              display: 'inline-block',
+              padding: '20px',
+              width: '400px',
+            }}
+          >
+            <h3>Today we are preparing {recipe.name}</h3>
+            <h3>for the {recipe.course} course </h3>
+            <h3>using the {recipe.technique} technique</h3>
           </div>
         );
       })}

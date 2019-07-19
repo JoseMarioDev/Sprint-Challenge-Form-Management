@@ -16,4 +16,5 @@
 - [x] What is a custom hook, and what does it mean to compose hooks together?
       Custom Hooks, so-called because you are building the hook yourself, allow you to apply non-visual behavior and stateful logic throughout your components by reusing the same hook over and over again. They follow the same patterns of naming that you’ve already learned (i.e. prefacing the function name with use, as in useState). You can build a reusable custom hook for uses as varied as handling controlled inputs, managing event listeners, and watching for key presses.
 
-- [ ] Describe the process of retrieving a token from a server and using that token in subsequent API calls.
+- [x] Describe the process of retrieving a token from a server and using that token in subsequent API calls.
+      a get request is made, the token is returned from the sever and stored in local storage

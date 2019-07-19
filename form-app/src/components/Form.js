@@ -17,6 +17,7 @@ const Register = (props, touched, errors) => {
         axios
           .post('http://localhost:5000/api/register', values)
           .then(res => {
+            console.log(res);
             localStorage.setItem('token', res.data.token);
             console.log(props);
           })
@@ -56,6 +57,7 @@ const Register = (props, touched, errors) => {
               type='text'
               onChange={props.handleChange}
               width='4'
+              reg
             />
           </div>
 
