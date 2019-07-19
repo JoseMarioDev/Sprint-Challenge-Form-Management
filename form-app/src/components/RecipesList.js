@@ -6,9 +6,12 @@ const RecipeList = () => {
 
   useEffect(() => {
     axiosWithAuth()
-      .get('http://localhost:5000/api/restricted/data')
-      .then(res => setRecipes(res.data))
-      .catch(err => console.log(err));
+      .get('/restricted/data')
+      .then(res => {
+        console.log(res);
+        setRecipes(res.data);
+      })
+      .catch(err => console.error(err));
   }, []);
   return (
     <div>

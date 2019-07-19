@@ -2,8 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
+import {useLocalStorage} from "./useLocalStorage"
 
 const Register = props => {
+  const [authToken,setAuthToken] = useLocalStorage("token")
   return (
     <Formik
       initialValues={{
@@ -16,7 +18,7 @@ const Register = props => {
         axios
           .post('http://localhost:5000/api/register', values)
           .then(res => {
-            localStorage.setItem('token', res.data.token);
+            setAuthToken(res.data.token)
             console.log(props);
           })
           .then(() => props.history.push('restricted/data'))
