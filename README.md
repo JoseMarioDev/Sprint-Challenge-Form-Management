@@ -47,20 +47,20 @@ Follow these steps to set up and work on your project:
 - [x] Push commits: `git push origin <firstName-lastName>`.
 - [x] Navigate to the BE folder in this repository (this is where your server is located) from the command line, install the dependencies, and run `yarn start` or `npm start` to spin up the server provided for you.
 - [x] In the terminal, navigate back to the main folder, then into the `client` folder.
-- [ ] Create your React app here.
+- [x] Create your React app here.
 
 Follow these steps for completing your project:
 
-- [ ] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's Repo).
-- [ ] Add your Project Manager as a Reviewer on the Pull-request.
-- [ ] PM then will count the HW as done by merging the branch back into master.
+- [x] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's Repo).
+- [x] Add your Project Manager as a Reviewer on the Pull-request.
+- [x] PM then will count the HW as done by merging the branch back into master.
 
 ## Minimum Viable Product
 
 Your finished project must include all of the following requirements:
 
-- [ ] A registration form built with formik - include inputs for a `username` and a `password`
-- [ ] Form validation using Yup
+- [x] A registration form built with formik - include inputs for a `username` and a `password`
+- [x] Form validation using Yup
 - [ ] A POST request made from the registration form to `http://localhost:6000/api/register` to add a user and retrieve a token - the request body should have the following shape:
 
 ```js
@@ -82,9 +82,9 @@ and the response object will look like this:
 
 - [ ] Write a custom hook that can set and retrieve this token to and from local storage
 
-- [ ] A GET request made with the token to `http://localhost:6000/api/restricted/data` to retrieve protected data
+- [ ] A GET request made with the token to `http://localhost:5000/api/restricted/data` to retrieve protected data
 
-- [ ] Map over the array of objects you recieve and render some or all of it's information to the DOM.
+- [ ] Map over the array of objects you receive and render some or all of it's information to the DOM.
 
 ## Stretch Problems
 
