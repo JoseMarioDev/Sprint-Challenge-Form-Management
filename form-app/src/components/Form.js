@@ -3,8 +3,11 @@ import axios from 'axios';
 import { Button, Form, Input } from 'semantic-ui-react';
 import { Formik, withFormik } from 'formik';
 import * as Yup from 'yup';
+import { useLocalStorage } from './useLocalStorage';
 
 const Register = (props, touched, errors) => {
+  const [storedValue, setValue] = useLocalStorage('token');
+
   return (
     <Formik
       initialValues={{
@@ -54,7 +57,7 @@ const Register = (props, touched, errors) => {
               label='password'
               name='password'
               id='password'
-              type='text'
+              type='password'
               onChange={props.handleChange}
               width='4'
               reg

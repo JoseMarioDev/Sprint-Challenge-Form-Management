@@ -23,6 +23,7 @@ const RecipeList = () => {
               display: 'inline-block',
               padding: '20px',
               width: '400px',
+              height: '200px',
             }}
           >
             <h3>Today we are preparing {recipe.name}</h3>
